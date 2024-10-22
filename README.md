@@ -22,6 +22,12 @@ Go to the project directory
   cd live-weather-website
 ```
 
+copy `env-example` into `.env` & Replace the `NEXT_PUBLIC_API_KEY` with your own API key from OpenWeatherMap
+
+```bash
+cp env-example .env
+```
+
 Install dependencies
 
 ```bash
@@ -46,7 +52,9 @@ To deploy this project run
 
 ## Demo
 
-Insert gif or link to demo
+- Live example of hyderabad city weather & error handling for invalid city name
+
+![demo-gif](./demo.gif)
 
 
 ## Authors
