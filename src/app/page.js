@@ -12,10 +12,11 @@ export default function Home() {
   const [response, setResponse] = useState();
   const [searchText, setSearchText] = useState("");
   const debouncedSearchText = useDebounce(searchText, 1000);
+
   const fetchWeatherData = async (cityName) => {
     try {
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_KEY}`
+        `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${NEXT_PUBLIC_API_KEY}`
       );
       if (!response.ok) {
         switch (response.status) {
@@ -40,9 +41,11 @@ export default function Home() {
       setError(message);
     }
   };
+
   const handleInputChange = (text) => {
     setSearchText(text);
   };
+
   useEffect(() => {
     if (debouncedSearchText.length !== 0) {
       fetchWeatherData(debouncedSearchText);
@@ -62,6 +65,19 @@ export default function Home() {
         value={searchText}
         onChange={(e) => handleInputChange(e.target.value)}
       />
+      {response && (
+        <div>
+          <p className={styles.displayValue}>
+            Temperature: {response?.main?.temp}
+          </p>
+          <p className={styles.displayValue}>
+            Humidity:{response?.main?.humidity}
+          </p>
+          <p className={styles?.displayValue}>General Weather conditions</p>
+        </div>
+      )}
+
+      {error && <div>{error}</div>}
     </div>
   );
 }
