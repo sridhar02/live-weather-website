@@ -16,7 +16,7 @@ export default function Home() {
   const fetchWeatherData = async (cityName) => {
     try {
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${NEXT_PUBLIC_API_KEY}`
+        `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${process.env.NEXT_PUBLIC_API_KEY}`
       );
       if (!response.ok) {
         switch (response.status) {
