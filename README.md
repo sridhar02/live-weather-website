@@ -54,7 +54,7 @@ To deploy this project run
 
 - Live example of hyderabad city weather & error handling for invalid city name
 
-![demo-gif](./demo.gif)
+![demo video](./demo.mp4)
 
 
 ## Authors
