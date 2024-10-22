@@ -1,0 +1,18 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+:root {
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-roboto-mono);
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #fff;
+}
+
+code {
+  font-family: var(--font-mono);
+}
