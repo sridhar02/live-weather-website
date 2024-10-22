@@ -2,9 +2,17 @@ import React from "react";
 import styles from "../styles/weather.module.css";
 
 import { useWeather } from "../Context/WeatherContext";
+import Loader from "./Loader";
 
 export const Weather = () => {
-  const { error, response, searchText, handleInputChange } = useWeather();
+  const { error, response, searchText, handleInputChange, isLoading } =
+    useWeather();
+
+  console.log({ isLoading });
+
+  const isError = error && !isLoading;
+
+  const isSuccess = response && !isLoading;
 
   return (
     <div className={styles.container}>
@@ -15,7 +23,8 @@ export const Weather = () => {
         value={searchText}
         onChange={(e) => handleInputChange(e.target.value)}
       />
-      {response && (
+      {isLoading && <Loader />}
+      {isSuccess && (
         <div>
           <p className={styles.displayValue}>
             Temperature:{" "}
@@ -36,7 +45,7 @@ export const Weather = () => {
         </div>
       )}
 
-      {error && <div className={styles.errorMessage}>{error}</div>}
+      {isError && <div className={styles.errorMessage}>{error}</div>}
     </div>
   );
 };

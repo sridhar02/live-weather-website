@@ -8,12 +8,14 @@ const WeatherContext = createContext(null);
 
 export const WeatherProvider = ({ children }) => {
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const [response, setResponse] = useState();
   const [searchText, setSearchText] = useState("");
   const debouncedSearchText = useDebounce(searchText, 1000);
 
   const fetchWeatherData = async (cityName) => {
     try {
+      setIsLoading(true);
       const response = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${process.env.NEXT_PUBLIC_API_KEY}&units=imperial`
       );
@@ -38,8 +40,12 @@ export const WeatherProvider = ({ children }) => {
       const message = formatErrorMessage(error.message);
       console.log(message);
       setError(message);
+    } finally {
+      setIsLoading(false);
     }
   };
+
+  console.log({ isLoading }, "context");
 
   const handleInputChange = (text) => {
     const newText = text.trim().toLowerCase();
@@ -62,6 +68,7 @@ export const WeatherProvider = ({ children }) => {
         response,
         searchText,
         handleInputChange,
+        isLoading,
       }}
     >
       {children}
