@@ -43,7 +43,8 @@ export default function Home() {
   };
 
   const handleInputChange = (text) => {
-    setSearchText(text);
+    const newText = text.trim().toLowerCase();
+    setSearchText(newText);
   };
 
   useEffect(() => {
@@ -68,16 +69,18 @@ export default function Home() {
       {response && (
         <div>
           <p className={styles.displayValue}>
-            Temperature: {response?.main?.temp}
+            Temperature:{" "}
+            <span className={styles.value}>{response?.main?.temp}</span>
           </p>
           <p className={styles.displayValue}>
-            Humidity:{response?.main?.humidity}
+            Humidity:
+            <span className={styles.value1}>{response?.main?.humidity}</span>
           </p>
           <p className={styles?.displayValue}>General Weather conditions</p>
         </div>
       )}
 
-      {error && <div>{error}</div>}
+      {error && <div className={styles.errorMessage}>{error}</div>}
     </div>
   );
 }

@@ -7,7 +7,8 @@
   justify-content: center;
   padding: 2rem;
   border-radius: 12px;
-  background-color: #f2f2f2;
+  background-color: #f5f5dc;
+  padding-bottom: 4rem;
 }
 
 .heading {
@@ -16,12 +17,29 @@
 
 .searchBox {
   padding: 1.5rem;
+  font-size: 1.2rem;
   height: 20px;
   margin: 1rem 0;
-  width: 60%;
+  width: 55%;
   border-radius: 4px;
   border: 1px solid #ddd;
 }
 
 .displayValue {
+  font-size: 1.4rem;
+  margin: 1.2rem 0;
+}
+
+.value {
+  margin-left: 4rem;
+}
+
+.value1 {
+  margin-left: 6.2rem;
+}
+
+.errorMessage {
+  font-size: 1.3rem;
+  margin: 1.2rem 0;
+  font-weight: 400;
 }

@@ -1,13 +1,7 @@
 
 # Live Weather Web Application
 
-Project is a demo of private equity firm, permission system for there structures,entities & users.  
-
-
-## Features
-
-
-
+Live Weather is a responsive web application that provides up-to-the-minute weather information for any location worldwide. Built with React, CSS Modules and JavaScript, this app leverages the OpenWeatherMap API to deliver accurate and timely weather data.
 
 ## Tech Stack
 
