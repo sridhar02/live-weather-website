@@ -6,6 +6,7 @@ export default function Home() {
   const [error, setError] = useState();
   const [response, setResponse] = useState();
   const [searchText, setSearchText] = useState("");
+  const debouncedSearchText = useDebounce(searchText, 1000);
   const fetchWeatherData = async (cityName) => {
     try {
       const response = await fetch(
