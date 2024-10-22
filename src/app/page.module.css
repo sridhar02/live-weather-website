@@ -23,19 +23,31 @@
   width: 55%;
   border-radius: 4px;
   border: 1px solid #ddd;
+  /* min-width: ; */
+  max-width: 850px;
+}
+
+@media screen and (max-width: 600px) {
+  .searchBox {
+    min-width: 340px; /* Adjust this value as needed */
+  }
 }
 
 .displayValue {
   font-size: 1.4rem;
-  margin: 1.2rem 0;
+  margin: 1.5rem 0;
 }
 
 .value {
   margin-left: 4rem;
 }
 
-.value1 {
+.humidity {
   margin-left: 6.2rem;
+}
+
+.weather {
+  margin-left: 7.5rem;
 }
 
 .errorMessage {

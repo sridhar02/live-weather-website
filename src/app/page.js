@@ -16,7 +16,7 @@ export default function Home() {
   const fetchWeatherData = async (cityName) => {
     try {
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${process.env.NEXT_PUBLIC_API_KEY}`
+        `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${process.env.NEXT_PUBLIC_API_KEY}&units=imperial`
       );
       if (!response.ok) {
         switch (response.status) {
@@ -70,13 +70,20 @@ export default function Home() {
         <div>
           <p className={styles.displayValue}>
             Temperature:{" "}
-            <span className={styles.value}>{response?.main?.temp}</span>
+            <span className={styles.value}>{response?.main?.temp} °F</span>
           </p>
           <p className={styles.displayValue}>
             Humidity:
-            <span className={styles.value1}>{response?.main?.humidity}</span>
+            <span className={styles.humidity}>
+              {response?.main?.humidity} %
+            </span>
           </p>
-          <p className={styles?.displayValue}>General Weather conditions</p>
+          <p className={styles?.displayValue}>
+            Weather
+            <span className={styles.weather}>
+              {response?.weather[0]?.description}
+            </span>
+          </p>
         </div>
       )}
 
