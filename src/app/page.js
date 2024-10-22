@@ -1,6 +1,11 @@
 "use client";
+
 import Image from "next/image";
+import { useState, useEffect } from "react";
+import { useDebounce } from "./hooks/useDebounce";
+
 import styles from "./page.module.css";
+import { formatErrorMessage } from "./utils";
 
 export default function Home() {
   const [error, setError] = useState();
@@ -38,6 +43,14 @@ export default function Home() {
   const handleInputChange = (text) => {
     setSearchText(text);
   };
+  useEffect(() => {
+    if (debouncedSearchText.length !== 0) {
+      fetchWeatherData(debouncedSearchText);
+    } else {
+      setResponse(null);
+      setError(null);
+    }
+  }, [debouncedSearchText]);
 
   return (
     <div className={styles.container}>
