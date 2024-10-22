@@ -8,8 +8,6 @@ export const Weather = () => {
   const { error, response, searchText, handleInputChange, isLoading } =
     useWeather();
 
-  console.log({ isLoading });
-
   const isError = error && !isLoading;
 
   const isSuccess = response && !isLoading;

@@ -32,20 +32,15 @@ export const WeatherProvider = ({ children }) => {
 
       const responseJSON = await response.json();
       setResponse(responseJSON);
-      console.log(responseJSON);
       setError(null);
     } catch (error) {
-      console.error("Error fetching weather data:", error.message);
       setResponse(null);
       const message = formatErrorMessage(error.message);
-      console.log(message);
       setError(message);
     } finally {
       setIsLoading(false);
     }
   };
-
-  console.log({ isLoading }, "context");
 
   const handleInputChange = (text) => {
     const newText = text.trim().toLowerCase();
